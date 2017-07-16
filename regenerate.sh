@@ -28,12 +28,16 @@ for name in $(cat $domainsList) ; do
 	openssl ca -batch -extensions v3_req -outdir ./tmp/ -out ./tmp/cert.pem  -config ./tmp/openssl.tmp.cnf -cert `echo $caCertFolder`ca-public.pem -keyfile `echo $caCertFolder`ca-private.pem -infiles tmp/certreq.pem
 
 	#Move newly generated certificate
+	echo "Moving certificate to its final location...";
 	targetDir=`echo $destination``echo $name`
 	mkdir -p $targetDir
 	mv ./tmp/cert.pem `echo $targetDir`/public.pem
 	mv ./tmp/certreq.pem `echo $targetDir`/request.pem
 	mv ./tmp/privkeyreq.pem `echo $targetDir`/private.pem
 	cp `echo $caCertFolder`ca-chain.pem  `echo $targetDir`/intermediate.pem
+	
+	#Inform user
+	echo "Cleaning...";
 
 	#Empty temporary directory
 	rm `echo $opensslConfigDir`tmp/*.pem
