@@ -41,6 +41,7 @@ subjectKeyIdentifier = hash
 keyUsage = digitalSignature, keyEncipherment
 extendedKeyUsage = serverAuth, clientAuth
 #authorityInfoAccess = caIssuers;URI:http://cert.communiquons.org/ca.pem
+subjectAltName = @alt_names
 
 [ ca ]
 default_ca = CA_default
@@ -64,4 +65,4 @@ organizationalUnitName = optional
 commonName = supplied
 emailAddress = optional
 
-
+[alt_names]
