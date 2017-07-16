@@ -27,7 +27,7 @@ for name in $(cat $domainsList) ; do
 	mv ./tmp/cert.pem `echo $targetDir`/public.pem
 	mv ./tmp/certreq.pem `echo $targetDir`/request.pem
 	mv ./tmp/privkeyreq.pem `echo $targetDir`/private.pem
-	cp `echo $caCertFolder`ca-chain.pem  `echo $targetDir`/chain.pem
+	cp `echo $caCertFolder`ca-chain.pem  `echo $targetDir`/intermediate.pem
 
 	#Empty temporary directory
 	rm `echo $opensslConfigDir`tmp/*.pem
