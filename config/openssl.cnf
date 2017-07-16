@@ -1,0 +1,67 @@
+dir = .
+
+[ req ]
+default_bits = 4096
+default_keyfile = private.pem
+default_md = sha256
+string_mask = nombstr
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+
+[ req_distinguished_name ]
+organizationName = Organization Name (company)
+organizationalUnitName = Organizational Unit Name (department, division)
+emailAddress = Email Address
+emailAddress_max = 40
+localityName = Locality Name (city, district)
+stateOrProvinceName = State or Province Name (full name)
+countryName = Country Name (2 letter code)
+countryName_max = 2
+countryName_min = 2
+commonName = Common Name (hostname, IP, or your name)
+commonName_max = 64
+
+#Default values for the above
+organizationName_default = Service_Pierre
+organizationalUnitName = Security
+localityName_default = Saint-Etienne
+stateOrProvinceName_default = France
+countryName_default = FR
+emailAddress_default = contact@communiquons.org
+
+[ v3_ca ]
+basicConstraints = critical, CA:TRUE
+subjectKeyIdentifier = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+#authorityInfoAccess = OCSP;URI:http://cert.communiquons.org/ca.pem
+
+[ v3_req ]
+basicConstraints = critical, CA:FALSE
+subjectKeyIdentifier = hash
+keyUsage = digitalSignature, keyEncipherment
+extendedKeyUsage = serverAuth, clientAuth
+#authorityInfoAccess = caIssuers;URI:http://cert.communiquons.org/ca.pem
+
+[ ca ]
+default_ca = CA_default
+
+[ CA_default ]
+serial = ./serial
+database = ./index.txt
+default_days = 30
+default_md = sha256
+preserve = no
+email_in_dn = no
+nameopt = default_ca
+certopt = default_ca
+policy = policy_match
+
+[ policy_match ]
+countryName = optional
+stateOrProvinceName = optional
+organizationName = optional
+organizationalUnitName = optional
+commonName = supplied
+emailAddress = optional
+
+

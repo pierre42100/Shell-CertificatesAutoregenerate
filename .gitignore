@@ -1,0 +1,4 @@
+certificates/*
+config/tmp/*
+config/ca-cert/*
+config/serial.old
