@@ -65,4 +65,5 @@ organizationalUnitName = optional
 commonName = supplied
 emailAddress = optional
 
+#Alternative names will be automaticaly added, do not add anything at the end of the file
 [alt_names]
