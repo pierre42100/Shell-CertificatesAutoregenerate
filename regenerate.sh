@@ -44,6 +44,10 @@ for name in $(cat $domainsList) ; do
 
 	#Remove temporary configuration
 	rm tmp/openssl.tmp.cnf
+
+	#Add a few lines
+	echo ;
+	echo ;
 done;
 
 #Empty database
